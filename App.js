@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -17,12 +17,24 @@ import {
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
+import { getUser } from './AppRepository';
 
 const App = () => {
   const [text, setText] = useState("Welcome")
+  const [textFromBackend, setTextFromBackend] = useState("From")
+
+  useEffect(()=>{
+    async function getUserAsync(){
+      const user = await getUser()
+      setTextFromBackend(user.title)
+    }
+    getUserAsync()
+  },[])
+
   return (
     <>
       <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+        <Text testID='title'>{textFromBackend}</Text>
         <Text testID='welcome'>{text}</Text>
         <Button testID='hello_button' title='Hello' onPress={() => setText('Hello!!!')} ></Button>
         <Button testID='world_button' title='World' onPress={() => setText('World!!!')} ></Button>
