@@ -4,7 +4,7 @@
   "configurations": {
     "ios.sim.debug": {
       "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/myapp.app",
-      "build": "RN_SRC_EXT=e2e.js xcodebuild -workspace ios/myapp.xcworkspace -scheme myapp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build -destination id=2875012C-CC60-4418-B37D-D9B88013CD8A",
+      "build": "RN_SRC_EXT=e2e.js xcodebuild -workspace ios/myapp.xcworkspace -scheme myapp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build -destination 'platform=iOS Simulator,name=iPhone 11'",
       "type": "ios.simulator",
       "device": {
         "type": "iPhone 11"
