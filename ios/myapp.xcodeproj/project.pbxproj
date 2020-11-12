@@ -194,7 +194,6 @@
 				F286F9F0FBDD34714CE35F09 /* Pods-myapp-tvOSTests.debug.xcconfig */,
 				F35C469698C3E65ECE05BED4 /* Pods-myapp-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -681,6 +680,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = myapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
