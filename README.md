@@ -9,9 +9,8 @@ This steps run detox locally
     - iOS Simulator Runtime: iOS 12.2 or higher
 
 ## Install dependencies
-- `npm install -g detox-cli`
-- `npm install jest jest-circus --save-dev --no-package-lock`
-- `detox init -r jest`
+- `npm install`
+- `cd ios && pod install`
 
 ### Android
 - Have `java -version` in "1.8.x_abc". [Mac](https://stackoverflow.com/questions/24342886/how-to-install-java-8-on-mac).
@@ -29,16 +28,11 @@ This steps run detox locally
 - brew install applesimutils
 
 ## Build and run test
+- `npm start`
+- In another terminal run `npx detox build --configuration ios.sim.debug`
+- `npx detox test --configuration ios.sim.debug  --cleanup`
 
-- `detox build --configuration ios.sim.debug`
-
-The last commands needs that you have an id from a simulator. To see this id: run in other terminal `npx react-native run-ios` and copy paste it on `.detoxrc.json` file: In `-destination id=<your_simulator_id>`
-
-- `npx react-native start`
-
-- In another terminal run `detox test --configuration ios.sim.debug`
-
-Analogously for android.
+Analogously for android with `--configuration android.emu.debug`
 
 ## Troubleshooting
 SDK “iphoneos” cannot be located. 
