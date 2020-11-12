@@ -25,6 +25,14 @@
       "device": {
         "avdName": "Pixel_API_28_AOSP"
       }
+    },
+    "android.emu.release": {
+      "binaryPath": "android/app/build/outputs/apk/release/app-release.apk",
+      "build": "cd android && RN_SRC_EXT=e2e.js ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release && cd ..",
+      "type": "android.emulator",
+      "device": {
+        "avdName": "Pixel_API_28_AOSP"
+      }
     }
   }
 }
