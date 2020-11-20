@@ -21,7 +21,7 @@ jobs:
         run: cd ./ios && pod install && cd ..
       - name: Detox Build
         run: detox build --configuration ios.sim.debug
-      - name: Launch metro for iOS
+      - name: Launch metro bundler
         run: yarn start &
       - name: Detox Test
         run: detox test --configuration ios.sim.debug --cleanup

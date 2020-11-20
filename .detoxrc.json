@@ -14,9 +14,7 @@
       "binaryPath": "android/app/build/outputs/apk/debug/app-debug.apk",
       "build": "cd android && RN_SRC_EXT=e2e.js ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug && cd ..",
       "type": "android.emulator",
-      "device": {
-        "avdName": "Pixel_API_28_AOSP"
-      }
+      "name": "emu"
     }
   }
 }
