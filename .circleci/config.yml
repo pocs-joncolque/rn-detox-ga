@@ -5,7 +5,6 @@ version: 2.1
 orbs:
   rn: react-native-community/react-native@4.4.2
 
-# Custom jobs which are not part of the Orb
 jobs:
   analyse_js:
     executor: rn/linux_js
@@ -20,15 +19,12 @@ jobs:
           command: yarn jest
           name: Jest
   checkout_code:
-    executor:
-      name: rn/linux_js
-      node_version: '10'
+    executor: rn/linux_js
     steps:
       - checkout
       - persist_to_workspace:
           paths: .
           root: .
-
 workflows:
   test:
     jobs:
@@ -37,36 +33,9 @@ workflows:
           requires:
             - checkout_code
       - rn/android_build:
-          build_type: debug
-          name: build_android_debug
-          project_path: android
-          requires:
-            - analyse_js
-      - rn/android_build:
           build_type: release
-          name: build_android_release
-          project_path: android
           requires:
             - analyse_js
       - rn/android_test:
-          detox_configuration: android.emu.release
           requires:
-            - build_android_release
-      - rn/ios_build:
-          build_configuration: Release
-          device: iPhone 11
-          name: build_ios_release
-          node_version: '10'
-          project_path: ios/myapp.xcodeproj
-          requires:
-            - analyse_js
-          scheme: myapp
-      - rn/ios_build_and_test:
-          build_configuration: Release
-          detox_configuration: ios.sim.release
-          device: iPhone 11
-          node_version: '10'
-          project_path: ios/myapp.xcodeproj
-          requires:
-            - analyse_js
-          scheme: myapp
+            - rn/android_build
